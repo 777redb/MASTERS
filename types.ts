@@ -45,4 +45,5 @@ export interface DisplaySettings {
   maxWidth: 'narrow' | 'medium' | 'wide';
   theme: 'light' | 'dark' | 'sepia';
   zoom: number; // Percentage, e.g., 100
+  institutionName: string; // Custom branding name
 }

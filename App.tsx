@@ -30,7 +30,8 @@ const DEFAULT_SETTINGS: DisplaySettings = {
   zoom: 100,
   fontFamily: 'serif',
   maxWidth: 'medium',
-  theme: 'dark'
+  theme: 'dark',
+  institutionName: 'STEM Masters'
 };
 
 const STEM_SUBJECTS = [
@@ -92,6 +93,11 @@ const App: React.FC = () => {
       root.classList.remove('dark');
     }
   }, [displaySettings.theme]);
+
+  // Document Title Branding
+  useEffect(() => {
+    document.title = displaySettings.institutionName || 'STEM Masters';
+  }, [displaySettings.institutionName]);
 
   // Load courses and settings from local storage on mount
   useEffect(() => {
@@ -612,7 +618,7 @@ const App: React.FC = () => {
         <div className="p-6">
           <div className="flex items-center space-x-3 text-blue-600 dark:text-blue-500 mb-8">
             <GraduationCap size={32} />
-            <span className="text-xl font-bold text-slate-900 dark:text-white tracking-tight">STEM<span className="font-light text-slate-400">Masters</span></span>
+            <span className="text-xl font-bold text-slate-900 dark:text-white tracking-tight">{displaySettings.institutionName}</span>
           </div>
           
           <nav className="space-y-2">
@@ -675,7 +681,7 @@ const App: React.FC = () => {
         <div className="md:hidden flex items-center justify-between p-4 border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950">
            <div className="flex items-center space-x-2 text-blue-600 dark:text-blue-500">
               <GraduationCap size={24} />
-              <span className="font-bold text-slate-900 dark:text-white">STEM Masters</span>
+              <span className="font-bold text-slate-900 dark:text-white">{displaySettings.institutionName}</span>
            </div>
            <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="text-slate-500 dark:text-slate-400">
              {isMobileMenuOpen ? <X size={24}/> : <Menu size={24} />}

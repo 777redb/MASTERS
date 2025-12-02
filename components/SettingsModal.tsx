@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { X, Type, Monitor, Moon, Sun, ZoomIn } from 'lucide-react';
+import { X, Type, Monitor, Moon, Sun, ZoomIn, Building2 } from 'lucide-react';
 import { DisplaySettings } from '../types';
 
 interface SettingsModalProps {
@@ -29,6 +29,21 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose, s
 
         <div className="space-y-8">
           
+          {/* Institution Name / Branding */}
+          <div>
+            <label className="text-sm font-medium text-slate-500 dark:text-slate-400 mb-3 block flex items-center gap-2">
+               <Building2 size={14} /> Institution & Branding
+            </label>
+            <input 
+              type="text" 
+              value={settings.institutionName || ''} 
+              onChange={(e) => onUpdateSettings({ ...settings, institutionName: e.target.value })}
+              placeholder="e.g. STEM Masters"
+              className="w-full bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg px-4 py-2 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+            />
+            <p className="text-[10px] text-slate-400 mt-2">Customize the platform name to match your personal university or organization.</p>
+          </div>
+
           {/* Theme / Mode */}
           <div>
             <label className="text-sm font-medium text-slate-500 dark:text-slate-400 mb-3 block flex items-center gap-2">
